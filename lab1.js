@@ -45,8 +45,8 @@ function assert(expression, failureMessage) {
  That will help later when you run jscs.
 */
 
-assert(1 === 1, '1 equals 1 - this assert will pass.');
-assert(1 === 2, 'this is an example of a failing assertion. 1 does not equal 2.');
+//assert(1 === 1, '1 equals 1 - this assert will pass.');
+//assert(1 === 2, 'this is an example of a failing assertion. 1 does not equal 2.');
 
 /* ===========================================================================
 ------------------Assertions (8 points total)---------------------------------
@@ -60,7 +60,8 @@ assert(1 === 2, 'this is an example of a failing assertion. 1 does not equal 2.'
 */
 
 //your code goes here
-
+assert('lion' === 'lion');
+assert('elephant' === 'tiger', 'fasle because elephant is not equal to tiger');
 /* ========================================================================
 ----------------- Meerkats (20 points total)-------------------------------
 ===========================================================================
@@ -81,11 +82,32 @@ var sentence2 = 'Come over here so you can scratch my belly.';
 // 'chirp' (10 points)
 
 // your code goes here
+var splitResult1 = sentence1.split(' '); //turns string into an array
+var splitResult2 = sentence2.split(' '); //turns string into an array
+
+//make something that can call splitResults 1 and 2 then plug that into .length
+
+function chirpCounter(sentenceArray) {
+  for (var i = 0; i < sentenceArray.length; i++) {
+    sentenceArray[i] = 'chirp';
+  // replace elements in array with the word "chirp"
+  }
+  var backTogether = sentenceArray.join(' ') + '.';
+  return backTogether;
+}
+
+sentence1 = chirpCounter(splitResult1);
 
 // TODO: part #2: use a while or do-while loop to replace the words in sentence 2
 // with 'chirp' (10 points)
 
 // your code goes here
+var i = 0;
+while (i < splitResult2.length) {
+        splitResult2[i] = 'chirp';
+        i++;
+    } // loops thru to change all elements in array to "chirp, "
+sentence2 = splitResult2.join(' ') + '.';
 
 // Leave these assertions as-is! If they pass, your code works.
 assert(sentence1 === 'chirp chirp chirp.', 'sentence 1 should have 3 chirps');
@@ -106,9 +128,7 @@ var nextAnimal;
 
 // TODO: 10 points
 // Assign one of your favorite animals to nextAnimal using Math.random() to pick
-
-// your code goes here
-
+nextAnimal = favoriteAnimals[Math.floor(Math.random() * 4)];
 assert(nextAnimal, 'assign something to nextAnimal');
 
 /* =====================================================================
@@ -124,11 +144,11 @@ assert(nextAnimal, 'assign something to nextAnimal');
 // don't require quotes for the code to work. Remove the unnecessary quotes.
 
 var animalExhibitStats = {
-  'numberOpen': 13,
-  'number closed': 2,
-  'petting-zoo-open': true,
-  'mostPopular': 'Lucky the Emperor Penguin',
-  '2ndMostPopular': 'Dumbo the Depressed Donkey'
+  numberOpen: 13,
+  numberClosed: 2,
+  PETTING_ZOO_OPEN: true,
+  mostPopular: 'Lucky the Emperor Penguin',
+  secondMostPopular: 'Dumbo the Depressed Donkey'
 };
 
 /*
@@ -138,10 +158,10 @@ var animalExhibitStats = {
  notation with dot notation wherever possible.
 */
 
-assert(animalExhibitStats['numberOpen'] === 13, 'there should be 13 open exhibits');
-assert(animalExhibitStats['number closed'] === 2, 'there should be 2 closed exhibits');
-assert(animalExhibitStats['petting-zoo-open'], 'hey! =( i was promised meerkats!');
-assert(animalExhibitStats['2ndMostPopular'] === 'Dumbo the Depressed Donkey',
+assert(animalExhibitStats.numberOpen === 13, 'there should be 13 open exhibits');
+assert(animalExhibitStats.numberClosed === 2, 'there should be 2 closed exhibits');
+assert(animalExhibitStats.PETTING_ZOO_OPEN, 'hey! =( i was promised meerkats!');
+assert(animalExhibitStats.secondMostPopular === 'Dumbo the Depressed Donkey',
   'Dumbo is supposed to be second place, as usual');
 
 // TODO: 4 points
@@ -149,7 +169,7 @@ assert(animalExhibitStats['2ndMostPopular'] === 'Dumbo the Depressed Donkey',
 // Use the above examples to guide you.
 
 // your assert goes here
-
+assert(animalExhibitStats.mostPopular === 'Lucky the Emperor Penguin', 'Should be the most popular');
 /* ==================================================================
 ----------------- Code Style (10 points) ----------------------------
 =====================================================================
